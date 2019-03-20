@@ -28,12 +28,18 @@ class Bomb extends React.Component{
   <div>
    <p>tick</p>
   </div>
-)}else{
+)
+} else if (this.state.count % 2 !== 0) {
   return(
     <div>
       <p>tock</p>
     </div>)
 
+} else if (this.state.count > 8) {
+    clearInterval(this.interval)
+    return ( <div>
+            <p>BOOM!!</p> 
+            </div>)
 }
 }
 }
