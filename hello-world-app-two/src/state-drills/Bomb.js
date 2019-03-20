@@ -14,14 +14,22 @@ class Bomb extends React.Component {
      } 
 
     compoundDidMount() {
-        const newCount = this.count+1;
-        this.interval = setInterval(() => {this.setState({count: newCount})})  
+        this.interval = setInterval(() => {
+            this.setState({
+                count: this.state.count + 1
+
+            })
+        }, 1000)                   //1000 is one second; 1000 milli seconds
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval)
     }
 
     render() {
         return (
             <div>
-               <p></p>
+               <p>{this.state.count}</p>
             </div>
             
         )
