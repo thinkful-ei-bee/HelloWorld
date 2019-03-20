@@ -21,21 +21,32 @@ class Bomb extends React.Component{
 
   componentWillUnmount() {
     clearInterval(this.interval)
+
+
   }
+
+  
+
   render(){
-    if(this.state.count%2===0)
-{return(
-  <div>
-   <p>tick</p>
-  </div>
-)}else{
-  return(
-    <div>
+    let result = this.state.count%2===0?<div>
+    <p>tick</p>
+   </div>:this.state.count>=8?<div>
+      <p>Boom!</p>
+      <img src='https://media.giphy.com/media/3oz8xDp5mAEOAZXEPe/giphy.gif'alt='bomb'/>
+    </div>:
+   <div>
       <p>tock</p>
-    </div>)
+      
+    </div>
+    if(this.state.count>8)clearInterval(this.interval)
+    return(
+     result
+    )
+    
+
 
 }
 }
-}
+
 
 export default Bomb 
