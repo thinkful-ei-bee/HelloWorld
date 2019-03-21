@@ -5,18 +5,23 @@ class Tab extends React.Component{
     tabs:[]
   };
   state = {
-    currentTabIndex:0
+    currentTabIndex:0,
+    displayContent:false
   };
 
   handleButtonClick(index){
    this.setState({currentTabIndex:index})
   }
 
+  
   renderButtons(){
     return this.props.tabs.map((tab,index)=>(
-      <button key={index} onClick={()=>this.handleButtonClick(index)}>
+
+     <div> <button key={index} onClick={()=>this.handleButtonClick(index)}>
         {tab.name}
-      </button>))
+      </button>
+      <p></p>
+      </div>))
   }
 
   renderContent(){
@@ -26,18 +31,12 @@ class Tab extends React.Component{
   </div>
   }
 
-
-
   render(){
-    
-    
-    
-    
     // only render content if its length is greater than 0. 
     return(
       <div>
         {this.renderButtons()}
-       {!!this.props.tabs.length && this.renderContent()}
+        {!!this.props.tabs.length && this.renderContent() }
       </div>
     )
   }
